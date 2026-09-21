@@ -1,0 +1,3782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Value Consulting | ZED, Lean, ISO & Sustainability Consultancy</title>
+
+<meta name="description" content="Value Consulting provides MSME ZED, Lean, ISO, EcoVadis, TfS, ESG and sustainability consultancy support across India.">
+<meta name="theme-color" content="#ffea00">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+
+<meta property="og:title" content="Value Consulting | Sustainability Beyond Compliance">
+<meta property="og:description" content="MSME ZED, Lean, ISO, EcoVadis, TfS, ESG and sustainability consultancy support.">
+<meta property="og:image" content="https://priyal5420.github.io/valueconsulting.github.io/logo.png">
+<meta property="og:url" content="https://priyal5420.github.io/valueconsulting.github.io/">
+<meta property="og:type" content="website">
+
+<!-- PDF LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    color:#1d1d1d;
+    background:#ffffff;
+    line-height:1.6;
+}
+
+:root{
+    --yellow:#ffea00;
+    --dark:#151515;
+    --light:#f7f7f7;
+    --soft:#fff9bf;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 20px;
+}
+
+section{
+    padding:80px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:38px;
+    margin-bottom:8px;
+}
+
+.section-title p{
+    max-width:760px;
+    margin:auto;
+    color:#666;
+}
+
+.line{
+    width:80px;
+    height:5px;
+    background:var(--yellow);
+    margin:14px auto;
+}
+
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#ffffff;
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    padding:10px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-area img{
+    width:65px;
+    height:65px;
+    object-fit:contain;
+}
+
+.logo-area h2{
+    font-size:22px;
+    line-height:1.1;
+}
+
+.logo-area span{
+    font-size:12px;
+    color:#777;
+}
+
+nav a{
+    margin-left:18px;
+    text-decoration:none;
+    color:#222;
+    font-weight:600;
+    font-size:14px;
+}
+
+nav a:hover{
+    border-bottom:3px solid var(--yellow);
+}
+
+
+/* HERO */
+
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    background:linear-gradient(105deg,#ffffff 60%,#ffed2d 60%);
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:50px;
+    align-items:center;
+}
+
+.hero h1{
+    font-size:56px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    background:var(--yellow);
+    padding:0 8px;
+}
+
+.hero p{
+    font-size:20px;
+    color:#555;
+    margin-bottom:28px;
+    max-width:700px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 24px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+    border:none;
+    font-size:15px;
+}
+
+.btn-dark{
+    background:#111;
+    color:#ffffff;
+}
+
+.btn-yellow{
+    background:var(--yellow);
+    color:#111;
+    border:2px solid #111;
+}
+
+.hero-card{
+    background:#ffffff;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 20px 50px rgba(0,0,0,.18);
+}
+
+.hero-card h3{
+    margin-bottom:15px;
+}
+
+.hero-card div{
+    padding:12px 0;
+    border-bottom:1px solid #ddd;
+}
+
+
+/* STATS */
+
+.stats{
+    background:#111;
+    color:#ffffff;
+    padding:35px 0;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    text-align:center;
+    gap:20px;
+}
+
+.stat h3{
+    font-size:34px;
+    color:var(--yellow);
+}
+
+.stat p{
+    color:#ccc;
+}
+
+
+/* ABOUT */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:45px;
+    align-items:center;
+}
+
+.about-box{
+    background:var(--soft);
+    padding:35px;
+    border-radius:14px;
+}
+
+.check{
+    margin:13px 0;
+    font-weight:600;
+}
+
+
+/* SERVICES */
+
+.services{
+    background:var(--light);
+}
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.card{
+    background:#ffffff;
+    padding:28px;
+    border-radius:12px;
+    border-top:5px solid var(--yellow);
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#666;
+}
+
+
+/* ZED LEVELS */
+
+.zed-boxes{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.zed-box{
+    padding:28px;
+    border-radius:12px;
+    background:#fafafa;
+    border:1px solid #ddd;
+}
+
+.zed-box strong{
+    display:block;
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.zed-box.bronze{
+    border-top:6px solid #a7652e;
+}
+
+.zed-box.silver{
+    border-top:6px solid #aaa;
+}
+
+.zed-box.gold{
+    border-top:6px solid #cfa600;
+}
+
+
+/* ZED CERTIFICATE GALLERY */
+
+.certificate-gallery{
+    margin-top:40px;
+}
+
+.certificate-gallery-title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.certificate-gallery-title h3{
+    font-size:28px;
+}
+
+.certificate-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.certificate-card{
+    background:#ffffff;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:14px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    text-align:center;
+    transition:.25s ease;
+}
+
+.certificate-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.certificate-card img{
+    width:100%;
+    height:430px;
+    object-fit:contain;
+    background:#ffffff;
+    border-radius:6px;
+}
+
+.certificate-card h4{
+    margin-top:14px;
+    font-size:21px;
+}
+
+.certificate-card.bronze-cert{
+    border-top:6px solid #a7652e;
+}
+
+.certificate-card.silver-cert{
+    border-top:6px solid #aaa;
+}
+
+.certificate-card.gold-cert{
+    border-top:6px solid #cfa600;
+}
+
+
+/* PROCESS */
+
+.process-section{
+    background:#f7f7f7;
+}
+
+.timeline{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.step{
+    background:#ffffff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 16px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.step-number{
+    width:45px;
+    height:45px;
+    margin:0 auto 14px;
+    border-radius:50%;
+    background:var(--yellow);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+
+/* PROFILE */
+
+.profile-section{
+    background:#f7f7f7;
+}
+
+.profile-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.4fr;
+    gap:40px;
+    align-items:start;
+}
+
+.profile-highlight{
+    background:#111;
+    color:#ffffff;
+    padding:30px;
+    border-radius:14px;
+    text-align:center;
+}
+
+.profile-highlight img{
+    width:220px;
+    height:270px;
+    object-fit:cover;
+    border-radius:12px;
+    border:5px solid var(--yellow);
+    margin-bottom:20px;
+}
+
+.profile-highlight h3{
+    color:var(--yellow);
+    font-size:30px;
+}
+
+.profile-highlight p{
+    margin-top:12px;
+}
+
+.profile-list{
+    background:#ffffff;
+    padding:30px;
+    border-radius:14px;
+}
+
+.profile-list div{
+    padding:11px 0;
+    border-bottom:1px solid #ddd;
+}
+
+
+/* CALCULATOR */
+
+.calculator{
+    background:#151515;
+    color:#ffffff;
+}
+
+.calculator .section-title p{
+    color:#ccc;
+}
+
+.calc-box{
+    max-width:980px;
+    margin:auto;
+    background:#ffffff;
+    color:#222;
+    padding:35px;
+    border-radius:15px;
+}
+
+.selection-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:7px;
+    font-weight:bold;
+}
+
+select{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:15px;
+    background:#ffffff;
+}
+
+.calc-button{
+    width:100%;
+    margin-top:22px;
+    padding:15px;
+    background:var(--yellow);
+    border:none;
+    border-radius:6px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.results{
+    display:none;
+    margin-top:35px;
+}
+
+
+/* QUOTATION HEADER */
+
+.quotation-logo-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    border-bottom:2px solid #111;
+    padding-bottom:15px;
+    margin-bottom:20px;
+}
+
+.quote-logo{
+    height:70px;
+    max-width:135px;
+    object-fit:contain;
+}
+
+.msme-big-logo{
+    height:90px;
+    width:auto;
+    max-width:230px;
+    object-fit:contain;
+}
+
+.quote-company{
+    flex:1;
+    text-align:center;
+}
+
+.quote-company p{
+    font-size:13px;
+    color:#666;
+}
+
+.gov-logos{
+    display:flex;
+    gap:16px;
+    align-items:center;
+}
+
+.result-header{
+    background:#111;
+    color:#ffffff;
+    padding:18px;
+    text-align:center;
+}
+
+
+/* QUOTATION SUMMARY */
+
+.summary-title{
+    margin-top:25px;
+    padding:10px 12px;
+    background:#f4f4f4;
+    border-left:5px solid var(--yellow);
+    font-size:18px;
+}
+
+.summary-table{
+    border:1px solid #ddd;
+    border-radius:8px;
+    overflow:hidden;
+    margin-top:8px;
+}
+
+.result-row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    border-bottom:1px solid #ddd;
+    padding:12px 14px;
+}
+
+.result-row:last-child{
+    border-bottom:none;
+}
+
+.result-row.total{
+    background:#fff9bf;
+    font-weight:bold;
+}
+
+.result-row.final{
+    background:var(--yellow);
+    font-weight:bold;
+    font-size:18px;
+}
+
+.subsidy-label{
+    line-height:1.25;
+}
+
+.subsidy-label small{
+    display:block;
+    font-size:12px;
+    color:#555;
+    font-weight:normal;
+    margin-top:2px;
+}
+
+
+/* CONTACT */
+
+.contact{
+    background:#f7f7f7;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.contact-card{
+    background:#ffffff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 4px 18px rgba(0,0,0,.07);
+}
+
+.contact-item{
+    margin:16px 0;
+}
+
+.contact-item strong{
+    display:block;
+}
+
+
+/* FAQ */
+
+details{
+    max-width:900px;
+    margin:12px auto;
+    background:#f5f5f5;
+    padding:18px;
+    border-radius:7px;
+}
+
+summary{
+    font-weight:bold;
+    cursor:pointer;
+}
+
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:#ddd;
+    padding:35px 20px;
+    text-align:center;
+}
+
+footer strong{
+    color:var(--yellow);
+}
+
+
+/* CLIENT DETAILS */
+
+.client-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-bottom:20px;
+}
+
+.input-group input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:15px;
+    background:#ffffff;
+}
+
+.quote-meta{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px 18px;
+    padding:14px;
+    background:#fafafa;
+    border:1px solid #ddd;
+    border-radius:8px;
+    margin:16px 0 8px;
+    font-size:14px;
+}
+
+.quote-meta strong{
+    display:block;
+    font-size:12px;
+    color:#666;
+    margin-bottom:2px;
+}
+
+/* MOBILE MENU */
+
+.menu-toggle{
+    display:none;
+    border:0;
+    background:#111;
+    color:#fff;
+    width:44px;
+    height:40px;
+    border-radius:6px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* WHATSAPP */
+
+.whatsapp-float{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:1200;
+    background:#25D366;
+    color:#fff;
+    text-decoration:none;
+    padding:13px 17px;
+    border-radius:999px;
+    font-weight:bold;
+    box-shadow:0 8px 24px rgba(0,0,0,.22);
+}
+
+.whatsapp-float:hover{
+    transform:translateY(-2px);
+}
+
+/* CONTACT LINKS */
+
+.contact-card a{
+    color:#1d1d1d;
+    text-decoration:none;
+}
+
+.contact-card a:hover{
+    text-decoration:underline;
+}
+
+/* FOOTER */
+
+.footer-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.2fr 1fr 1fr;
+    gap:30px;
+    text-align:left;
+    padding-bottom:25px;
+}
+
+.footer-grid h3{
+    color:var(--yellow);
+    margin-bottom:10px;
+}
+
+.footer-grid a{
+    display:block;
+    color:#ddd;
+    text-decoration:none;
+    margin:5px 0;
+}
+
+.footer-grid a:hover{
+    color:#fff;
+}
+
+.footer-bottom{
+    border-top:1px solid #333;
+    padding-top:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .menu-toggle{
+        display:block;
+    }
+
+    nav{
+        display:none;
+        position:absolute;
+        top:78px;
+        left:15px;
+        right:15px;
+        background:#fff;
+        padding:12px;
+        border-radius:10px;
+        box-shadow:0 10px 30px rgba(0,0,0,.14);
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    nav.open{
+        display:flex;
+    }
+
+    nav a{
+        margin:0;
+        padding:11px 8px;
+        border-bottom:1px solid #eee;
+    }
+
+    .hero{
+        background:#ffffff;
+    }
+
+    .hero-grid,
+    .about-grid,
+    .profile-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats-grid,
+    .card-grid,
+    .zed-boxes,
+    .timeline,
+    .selection-grid,
+    .certificate-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .quotation-logo-row{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .gov-logos{
+        justify-content:center;
+    }
+
+    .msme-big-logo{
+        height:80px;
+        max-width:210px;
+    }
+
+    .certificate-card img{
+        height:auto;
+    }
+
+    .client-grid,
+    .quote-meta,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .whatsapp-float{
+        right:14px;
+        bottom:14px;
+        padding:12px 15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo-area">
+
+<img src="logo.png" alt="Value Consulting Logo">
+
+<div>
+
+<h2>Value Consulting</h2>
+
+<span>Sustainability Beyond Compliance</span>
+
+</div>
+
+</div>
+
+<button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+
+<nav id="mainNav">
+
+<a href="#home">Home</a>
+
+<a href="#about">About</a>
+
+<a href="#services">Services</a>
+
+<a href="#zed">ZED</a>
+
+<a href="#profile">Profile</a>
+
+<a href="#quotation">Quotation</a>
+
+<a href="#contact">Contact</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
+<div>
+
+<h1>
+
+Sustainability Beyond
+
+<span>Compliance</span>
+
+</h1>
+
+
+<p>
+
+Consultancy, auditing, process improvement and training solutions for MSMEs and organizations across India.
+
+</p>
+
+
+<a href="#services" class="btn btn-dark">
+
+Explore Services
+
+</a>
+
+
+<a href="#quotation" class="btn btn-yellow">
+
+ZED Quotation
+
+</a>
+
+</div>
+
+
+<div class="hero-card">
+
+<h3>Our Key Expertise</h3>
+
+<div>✓ MSME Sustainable ZED Certification</div>
+
+<div>✓ MSME Competitive Lean Scheme</div>
+
+<div>✓ ISO Management Systems</div>
+
+<div>✓ ESG & Sustainability</div>
+
+<div>✓ EcoVadis & TfS</div>
+
+<div>✓ Auditing & Training</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="stats">
+
+<div class="container stats-grid">
+
+<div class="stat">
+<h3>25+</h3>
+<p>Years of Experience</p>
+</div>
+
+<div class="stat">
+<h3>1000+</h3>
+<p>Clients</p>
+</div>
+
+<div class="stat">
+<h3>15</h3>
+<p>States</p>
+</div>
+
+<div class="stat">
+<h3>Govt.</h3>
+<p>Empaneled Consultancy</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>About Value Consulting</h2>
+
+<div class="line"></div>
+
+</div>
+
+
+<div class="about-grid">
+
+<div>
+
+<p>
+
+Value Consulting was established on 1st April 2000 and specializes in standardization of systems for Government and private organizations.
+
+</p>
+
+<p style="margin-top:15px;">
+
+With a nationwide presence and over 1,000 clients across 15 states, Value Consulting provides consultancy, auditing, process improvement and training solutions.
+
+</p>
+
+<p style="margin-top:15px;">
+
+Value Consulting is empaneled under the MSME Competitive Lean Scheme and MSME Sustainable (ZED) Certification Scheme.
+
+</p>
+
+</div>
+
+
+<div class="about-box">
+
+<div class="check">✓ 25+ Years of Experience</div>
+
+<div class="check">✓ 1000+ Clients</div>
+
+<div class="check">✓ Presence Across 15 States</div>
+
+<div class="check">✓ Government & Private Sector Experience</div>
+
+<div class="check">✓ MSME ZED & Lean Empanelment</div>
+
+<div class="check">✓ Practical Implementation Support</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Our Services</h2>
+
+<div class="line"></div>
+
+<p>
+
+Professional consultancy support across quality, sustainability, management systems and MSME improvement schemes.
+
+</p>
+
+</div>
+
+
+<div class="card-grid">
+
+<div class="card">
+<h3>🏆 ZED Certification</h3>
+<p>Consultancy and handholding support for MSME Sustainable ZED Certification.</p>
+</div>
+
+<div class="card">
+<h3>⚙ MSME Lean</h3>
+<p>Support under the MSME Competitive Lean Scheme for productivity and process improvement.</p>
+</div>
+
+<div class="card">
+<h3>📋 ISO Consultancy</h3>
+<p>Management system consultancy across multiple ISO standards.</p>
+</div>
+
+<div class="card">
+<h3>🌱 ESG & Sustainability</h3>
+<p>ESG, Business & Human Rights, sustainability reporting and implementation support.</p>
+</div>
+
+<div class="card">
+<h3>⭐ EcoVadis & TfS</h3>
+<p>Assessment preparation, documentation, evidence development and advisory support.</p>
+</div>
+
+<div class="card">
+<h3>📊 Audit & Training</h3>
+<p>Internal audits, compliance reviews, management systems training and business improvement.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ZED SECTION -->
+
+<section id="zed">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>MSME Sustainable ZED Certification</h2>
+
+<div class="line"></div>
+
+<p>
+
+ZED promotes Zero Defect and Zero Effect practices to help MSMEs improve quality, productivity and sustainability.
+
+</p>
+
+</div>
+
+
+<!-- ZED LEVEL BOXES -->
+
+<div class="zed-boxes">
+
+<div class="zed-box bronze">
+
+<strong>Bronze</strong>
+
+<p>
+
+Entry level certification focused on basic systems and operational practices.
+
+</p>
+
+</div>
+
+
+<div class="zed-box silver">
+
+<strong>Silver</strong>
+
+<p>
+
+Focused on process improvement, standardization and stronger management systems.
+
+</p>
+
+</div>
+
+
+<div class="zed-box gold">
+
+<strong>Gold</strong>
+
+<p>
+
+Advanced level focused on manufacturing excellence, innovation and sustainability.
+
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CERTIFICATE IMAGES -->
+
+<div class="certificate-gallery">
+
+<div class="certificate-gallery-title">
+
+<h3>ZED Certification Levels</h3>
+
+<div class="line"></div>
+
+</div>
+
+
+<div class="certificate-grid">
+
+
+<div class="certificate-card bronze-cert">
+
+<img
+src="zed-bronze.jpg"
+alt="ZED Bronze Certificate"
+>
+
+<h4>ZED Bronze</h4>
+
+</div>
+
+
+<div class="certificate-card silver-cert">
+
+<img
+src="zed-silver.jpg"
+alt="ZED Silver Certificate"
+>
+
+<h4>ZED Silver</h4>
+
+</div>
+
+
+<div class="certificate-card gold-cert">
+
+<img
+src="zed-gold.jpg"
+alt="ZED Gold Certificate"
+>
+
+<h4>ZED Gold</h4>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ELIGIBILITY -->
+
+<section class="services">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>ZED Eligibility</h2>
+
+<div class="line"></div>
+
+</div>
+
+
+<div
+class="about-box"
+style="
+max-width:850px;
+margin:auto;
+text-align:center;
+"
+>
+
+<h3>Who Can Participate?</h3>
+
+<p
+style="
+margin-top:10px;
+font-size:18px;
+"
+>
+
+Manufacturing MSMEs registered on the Udyam Registration portal are eligible to participate.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BENEFITS -->
+
+<section>
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Business Benefits of ZED</h2>
+
+<div class="line"></div>
+
+</div>
+
+
+<div class="card-grid">
+
+<div class="card">
+<h3>Operational Excellence</h3>
+<p>Improved leadership and process control.</p>
+</div>
+
+<div class="card">
+<h3>Safer Workplace</h3>
+<p>Safer, cleaner and more productive operations.</p>
+</div>
+
+<div class="card">
+<h3>Quality Excellence</h3>
+<p>Zero defects and consistent product quality.</p>
+</div>
+
+<div class="card">
+<h3>Cost Optimization</h3>
+<p>Lower manufacturing, energy and operating costs.</p>
+</div>
+
+<div class="card">
+<h3>Lean Operations</h3>
+<p>Optimized inventory, assets and resource utilization.</p>
+</div>
+
+<div class="card">
+<h3>Continuous Improvement</h3>
+<p>Data-driven decision making and process excellence.</p>
+</div>
+
+<div class="card">
+<h3>Customer Confidence</h3>
+<p>Reliable delivery and higher customer satisfaction.</p>
+</div>
+
+<div class="card">
+<h3>Skilled Workforce</h3>
+<p>Empowered and accountable teams.</p>
+</div>
+
+<div class="card">
+<h3>Sustainable Manufacturing</h3>
+<p>Resource efficiency and environmental responsibility.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROCESS -->
+
+<section class="process-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>ZED Certification Process</h2>
+
+<div class="line"></div>
+
+</div>
+
+
+<div class="timeline">
+
+<div class="step">
+<div class="step-number">1</div>
+<h3>Pledge</h3>
+<p>Organization commits towards ZED Certification.</p>
+</div>
+
+<div class="step">
+<div class="step-number">2</div>
+<h3>Compliance Undertaking</h3>
+<p>Required compliance undertaking is completed.</p>
+</div>
+
+<div class="step">
+<div class="step-number">3</div>
+<h3>Document Upload & Verification</h3>
+<p>Relevant documents are uploaded for online verification.</p>
+</div>
+
+<div class="step">
+<div class="step-number">4</div>
+<h3>Recommendation</h3>
+<p>Recommendation is provided based on verification.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section class="profile-section" id="profile">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Consultant Profile</h2>
+
+<div class="line"></div>
+
+</div>
+
+
+<div class="profile-grid">
+
+<div class="profile-highlight">
+
+<img
+src="hiren-vyas.png"
+alt="Hiren Vyas"
+>
+
+<h3>Hiren Vyas</h3>
+
+<p>Lead Consultant, Value Consulting</p>
+
+<p>
+
+Empaneled Consultant under MSME Competitive ZED and Lean schemes.
+
+</p>
+
+<p>
+
+Technical Expert under Quality Council of India / Ministry of Commerce and Industry.
+
+</p>
+
+</div>
+
+
+<div class="profile-list">
+
+<div>
+Indian Institute of Corporate Affairs Certified ESG Impact Leader & Business and Human Rights Professional
+</div>
+
+<div>
+Auditor for SA 8000
+</div>
+
+<div>
+Certified Regulatory Professional
+</div>
+
+<div>
+Lead Verifier / Lead Validator for GHG Accounting – ISO 14064
+</div>
+
+<div>
+Lead Auditor for ISO 9001, 14001, 22000, 27001, 37001, 41001, 45001, 50001 & 5S
+</div>
+
+<div>
+Lean Consultant – Empaneled under MSME Competitive Lean Scheme
+</div>
+
+<div>
+ZED Consultant – Empaneled under MSME Sustainable ZED Certification Scheme
+</div>
+
+<div>
+Advisor for BRSR, TfS, EcoVadis, Responsible Care, SMETA, TCFD, SASB, GRI, UNGC and SBTi
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- QUOTATION -->
+
+<section class="calculator" id="quotation">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>ZED Quotation Calculator</h2>
+
+<div class="line"></div>
+
+<p>
+
+Select the certification level, MSME category and applicant category.
+
+</p>
+
+</div>
+
+
+<div class="calc-box">
+
+<h3 style="margin-bottom:15px;">Client Details</h3>
+
+<div class="client-grid">
+
+<div class="input-group">
+<label>Company Name *</label>
+<input type="text" id="clientCompany" placeholder="Enter company name">
+</div>
+
+<div class="input-group">
+<label>Contact Person</label>
+<input type="text" id="clientContact" placeholder="Enter contact person">
+</div>
+
+<div class="input-group">
+<label>City</label>
+<input type="text" id="clientCity" placeholder="Enter city">
+</div>
+
+<div class="input-group">
+<label>Mobile Number</label>
+<input type="tel" id="clientMobile" placeholder="Enter mobile number">
+</div>
+
+</div>
+
+<div class="selection-grid">
+
+
+<div class="input-group">
+
+<label>Certification Level</label>
+
+<select id="level">
+
+<option value="silver">Silver</option>
+
+<option value="gold">Gold</option>
+
+</select>
+
+</div>
+
+
+<div class="input-group">
+
+<label>MSME Category</label>
+
+<select id="msme">
+
+<option value="micro">Micro</option>
+
+<option value="small">Small</option>
+
+<option value="medium">Medium</option>
+
+</select>
+
+</div>
+
+
+<div class="input-group">
+
+<label>Applicant Category</label>
+
+<select id="applicant">
+
+<option value="male">General Male</option>
+
+<option value="women">Women Entrepreneur</option>
+
+<option value="special">SC / ST / EWS</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+<button
+class="calc-button"
+onclick="calculateZED()"
+>
+
+Calculate ZED Quotation
+
+</button>
+
+
+<div
+class="results"
+id="results"
+>
+
+
+<!-- LOGOS -->
+
+<div class="quotation-logo-row">
+
+
+<img
+src="logo.png"
+id="pdfValueLogo"
+class="quote-logo"
+alt="Value Consulting"
+>
+
+
+<div class="quote-company">
+
+<h2>Value Consulting</h2>
+
+<p>
+
+MSME Sustainable ZED Certification Consultancy
+
+</p>
+
+</div>
+
+
+<div class="gov-logos">
+
+
+<img
+src="zed-logo.png"
+id="pdfZedLogo"
+class="quote-logo"
+alt="ZED Logo"
+>
+
+
+<img
+src="msme-logo.png"
+id="pdfMsmeLogo"
+class="msme-big-logo"
+alt="MSME Logo"
+>
+
+
+</div>
+
+</div>
+
+
+<div class="result-header">
+
+<h2 id="quoteTitle">
+
+ZED Quotation
+
+</h2>
+
+<p>
+
+Fee & Subsidy Summary
+
+</p>
+
+</div>
+
+<div class="quote-meta">
+<div><strong>Quotation No.</strong><span id="quoteNoDisplay"></span></div>
+<div><strong>Date</strong><span id="quoteDateDisplay"></span></div>
+<div><strong>Company</strong><span id="quoteCompanyDisplay"></span></div>
+<div><strong>Contact</strong><span id="quoteContactDisplay"></span></div>
+<div><strong>City</strong><span id="quoteCityDisplay"></span></div>
+<div><strong>Mobile</strong><span id="quoteMobileDisplay"></span></div>
+</div>
+
+<!-- CERTIFICATION FEE SUMMARY -->
+
+<h3 class="summary-title">
+
+Certification Fee Summary
+
+</h3>
+
+
+<div class="summary-table">
+
+<div class="result-row">
+
+<span>Certification Fee</span>
+
+<strong id="certFee"></strong>
+
+</div>
+
+
+<div class="result-row">
+
+<span class="subsidy-label">
+
+Subsidy
+
+<small id="certSubsidyLabel">
+
+(On Final Certification Fee)
+
+</small>
+
+</span>
+
+<strong id="certSubsidyAmount"></strong>
+
+</div>
+
+
+<div class="result-row total">
+
+<span>Amount Payable</span>
+
+<strong id="certPayable"></strong>
+
+</div>
+
+
+<div class="result-row">
+
+<span>Amount</span>
+
+<strong id="certBaseAmount"></strong>
+
+</div>
+
+
+<div class="result-row">
+
+<span>GST (18%)</span>
+
+<strong id="certGST"></strong>
+
+</div>
+
+
+<div class="result-row final">
+
+<span>Net Payable Amount</span>
+
+<strong id="certNetPayable"></strong>
+
+</div>
+
+</div>
+
+
+<!-- HANDHOLDING SUMMARY -->
+
+<h3 class="summary-title">
+
+Handholding Fee Summary
+
+</h3>
+
+
+<div class="summary-table">
+
+<div class="result-row">
+
+<span>Handholding Fee</span>
+
+<strong id="handholdingFee"></strong>
+
+</div>
+
+
+<div class="result-row">
+
+<span class="subsidy-label">
+
+Subsidy
+
+<small id="handholdingSubsidyLabel">
+
+(On Handholding Fee)
+
+</small>
+
+</span>
+
+<strong id="handholdingSubsidyAmount"></strong>
+
+</div>
+
+
+<div class="result-row total">
+
+<span>Amount Payable</span>
+
+<strong id="handholdingPayable"></strong>
+
+</div>
+
+
+<div class="result-row">
+
+<span>Amount</span>
+
+<strong id="handholdingBaseAmount"></strong>
+
+</div>
+
+
+<div class="result-row">
+
+<span>GST (18%)</span>
+
+<strong id="handholdingGST"></strong>
+
+</div>
+
+
+<div class="result-row final">
+
+<span>Net Payable Amount</span>
+
+<strong id="handholdingNetPayable"></strong>
+
+</div>
+
+</div>
+
+
+<!-- OVERALL -->
+
+<h3 class="summary-title">
+
+Overall Payment Summary
+
+</h3>
+
+
+<div class="summary-table">
+
+<div class="result-row">
+
+<span>Total Fee</span>
+
+<strong id="projectTotal"></strong>
+
+</div>
+
+
+<div class="result-row">
+
+<span>Total Eligible Central Subsidy</span>
+
+<strong id="centralSubsidy"></strong>
+
+</div>
+
+
+<div class="result-row total">
+
+<span>Amount Payable after Central Subsidy</span>
+
+<strong id="balance"></strong>
+
+</div>
+
+
+<div class="result-row">
+
+<span>Eligible State Assistance</span>
+
+<strong id="stateSubsidy"></strong>
+
+</div>
+
+
+<div class="result-row final">
+
+<span>Final Client Payable Amount</span>
+
+<strong id="clientContribution"></strong>
+
+</div>
+
+</div>
+
+
+<!-- PAYMENT MILESTONES -->
+
+<h3 class="summary-title">
+
+Handholding Fee – Payment Milestones
+
+</h3>
+
+
+<div class="summary-table">
+
+<div class="result-row">
+
+<span>1st Installment – 40%</span>
+
+<strong id="m1"></strong>
+
+</div>
+
+
+<div class="result-row">
+
+<span>2nd Installment – 30%</span>
+
+<strong id="m2"></strong>
+
+</div>
+
+
+<div class="result-row">
+
+<span>3rd Installment – 30%</span>
+
+<strong id="m3"></strong>
+
+</div>
+
+</div>
+
+
+<button
+id="pdfButton"
+class="btn btn-dark"
+style="margin-top:22px;"
+onclick="downloadPDF()"
+>
+
+Download Quotation PDF
+
+</button>
+
+<button
+id="newQuoteButton"
+class="btn btn-yellow"
+style="margin-top:22px;margin-left:8px;"
+onclick="newQuotation()"
+>
+New Quotation
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Contact Value Consulting</h2>
+
+<div class="line"></div>
+
+</div>
+
+
+<div class="contact-grid">
+
+<div class="contact-card">
+
+<h3>Contact Details</h3>
+
+<div class="contact-item">
+<strong>Phone</strong>
+<a href="tel:+919824099027">+91 98240 99027</a><br>
+<a href="tel:+919213699027">+91 92136 99027</a>
+</div>
+
+<div class="contact-item">
+<strong>WhatsApp</strong>
+<a href="https://wa.me/919213699027" target="_blank" rel="noopener">+91 92136 99027</a>
+</div>
+
+<div class="contact-item">
+<strong>Email – MSME ZED</strong>
+<a href="mailto:value.zedmsme@gmail.com">value.zedmsme@gmail.com</a>
+</div>
+
+<div class="contact-item">
+<strong>Email – MSME Lean</strong>
+<a href="mailto:value.leanmsme@gmail.com">value.leanmsme@gmail.com</a>
+</div>
+
+</div>
+
+<div class="contact-card">
+
+<h3>Consulting Areas</h3>
+
+<div class="contact-item">
+MSME ZED Certification
+</div>
+
+<div class="contact-item">
+MSME Lean Scheme
+</div>
+
+<div class="contact-item">
+ISO Management Systems
+</div>
+
+<div class="contact-item">
+EcoVadis & TfS
+</div>
+
+<div class="contact-item">
+ESG & Sustainability
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section>
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="line"></div>
+
+</div>
+
+
+<details>
+
+<summary>
+
+Who is eligible for ZED Certification?
+
+</summary>
+
+<p>
+
+Manufacturing MSMEs registered with the Udyam Registration portal are eligible to participate.
+
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+
+Does Value Consulting provide ZED handholding support?
+
+</summary>
+
+<p>
+
+Yes. Value Consulting provides consultancy and handholding support for the MSME Sustainable ZED Certification Scheme.
+
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+
+What is the handholding payment ratio?
+
+</summary>
+
+<p>
+
+Handholding payments are shown in a 40:30:30 installment ratio.
+
+</p>
+
+</details>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-grid">
+<div>
+<h3>Value Consulting</h3>
+<p>Sustainability Beyond Compliance</p>
+<p style="margin-top:8px;">MSME ZED, Lean, ISO, ESG & Sustainability Consultancy.</p>
+</div>
+
+<div>
+<h3>Quick Links</h3>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#zed">ZED Certification</a>
+<a href="#quotation">ZED Quotation</a>
+<a href="#contact">Contact</a>
+</div>
+
+<div>
+<h3>Contact</h3>
+<a href="tel:+919824099027">+91 98240 99027</a>
+<a href="https://wa.me/919213699027" target="_blank" rel="noopener">WhatsApp: +91 92136 99027</a>
+<a href="mailto:value.zedmsme@gmail.com">value.zedmsme@gmail.com</a>
+</div>
+</div>
+
+<div class="footer-bottom">
+© <span id="year"></span> <strong>Value Consulting</strong> — Sustainability Beyond Compliance
+</div>
+
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/919213699027?text=Hello%20Value%20Consulting%2C%20I%20would%20like%20to%20know%20more%20about%20ZED%20Certification." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WhatsApp</a>
+
+
+
+<script>
+
+
+/* MONEY FORMAT */
+
+function money2(value){
+
+return new Intl.NumberFormat(
+'en-IN',
+{
+style:'currency',
+currency:'INR',
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+).format(value);
+
+}
+
+
+function minusMoney2(value){
+
+return "- " + money2(value);
+
+}
+
+
+/* QUOTATION HELPERS */
+
+let currentQuoteNumber = "";
+
+function getQuotationNumber(){
+    if(currentQuoteNumber){
+        return currentQuoteNumber;
+    }
+
+    const year = new Date().getFullYear();
+    const key = "vcZedQuoteCounter_" + year;
+    let counter = parseInt(localStorage.getItem(key) || "0", 10);
+    counter += 1;
+    localStorage.setItem(key, String(counter));
+    currentQuoteNumber = "VC/ZED/" + year + "/" + String(counter).padStart(3,"0");
+    return currentQuoteNumber;
+}
+
+function getQuotationDate(){
+    return new Date().toLocaleDateString("en-GB");
+}
+
+function safeClientValue(id){
+    const el = document.getElementById(id);
+    return el && el.value.trim() ? el.value.trim() : "-";
+}
+
+/* CALCULATOR */
+
+function calculateZED(){
+
+const companyName = document.getElementById("clientCompany").value.trim();
+
+if(!companyName){
+    alert("Company Name enter karein.");
+    document.getElementById("clientCompany").focus();
+    return;
+}
+
+const quoteNo = getQuotationNumber();
+const quoteDate = getQuotationDate();
+
+const level =
+document.getElementById("level").value;
+
+
+const msme =
+document.getElementById("msme").value;
+
+
+const applicant =
+document.getElementById("applicant").value;
+
+
+/* HANDHOLDING FEE */
+
+const handholdingFee =
+200000;
+
+
+/* CERTIFICATION FEE */
+
+const certificationFee =
+
+level === "silver"
+
+?
+
+32000
+
+:
+
+72000;
+
+
+/* HANDHOLDING SUBSIDY */
+
+const handholdingRates = {
+
+micro:{
+male:0.80,
+women:0.90,
+special:0.90
+},
+
+small:{
+male:0.60,
+women:0.70,
+special:0.70
+},
+
+medium:{
+male:0.50,
+women:0.60,
+special:0.60
+}
+
+};
+
+
+/* CERTIFICATION SUBSIDY */
+
+const certificationRates = {
+
+micro:{
+male:0.80,
+women:1.00,
+special:0.90
+},
+
+small:{
+male:0.60,
+women:1.00,
+special:0.70
+},
+
+medium:{
+male:0.50,
+women:1.00,
+special:0.60
+}
+
+};
+
+
+const handholdingRate =
+
+handholdingRates
+[msme]
+[applicant];
+
+
+const certificationRate =
+
+certificationRates
+[msme]
+[applicant];
+
+
+/* HANDHOLDING */
+
+const handholdingSubsidy =
+
+handholdingFee *
+handholdingRate;
+
+
+const handholdingPayable =
+
+handholdingFee -
+handholdingSubsidy;
+
+
+const handholdingBaseAmount =
+
+handholdingPayable /
+1.18;
+
+
+const handholdingGST =
+
+handholdingPayable -
+handholdingBaseAmount;
+
+
+/* CERTIFICATION */
+
+const certificationSubsidy =
+
+certificationFee *
+certificationRate;
+
+
+const certificationPayable =
+
+certificationFee -
+certificationSubsidy;
+
+
+const certificationBaseAmount =
+
+certificationPayable /
+1.18;
+
+
+const certificationGST =
+
+certificationPayable -
+certificationBaseAmount;
+
+
+/* OVERALL */
+
+const projectTotal =
+
+handholdingFee +
+certificationFee;
+
+
+const centralSubsidy =
+
+handholdingSubsidy +
+certificationSubsidy;
+
+
+const balance =
+
+projectTotal -
+centralSubsidy;
+
+
+const stateSubsidy =
+
+(balance / 1.18)
+*
+0.50;
+
+
+const clientContribution =
+
+balance -
+stateSubsidy;
+
+
+/* INSTALLMENTS */
+
+const milestone1 =
+
+handholdingPayable *
+0.40;
+
+
+const milestone2 =
+
+handholdingPayable *
+0.30;
+
+
+const milestone3 =
+
+handholdingPayable *
+0.30;
+
+
+/* CERTIFICATION DISPLAY */
+
+document.getElementById("certFee").innerText =
+money2(certificationFee);
+
+document.getElementById("certSubsidyAmount").innerText =
+minusMoney2(certificationSubsidy);
+
+document.getElementById("certSubsidyLabel").innerText =
+"(On Final Certification Fee) (" +
+Math.round(certificationRate * 100) +
+"%)";
+
+document.getElementById("certPayable").innerText =
+money2(certificationPayable);
+
+document.getElementById("certBaseAmount").innerText =
+money2(certificationBaseAmount);
+
+document.getElementById("certGST").innerText =
+money2(certificationGST);
+
+document.getElementById("certNetPayable").innerText =
+money2(certificationPayable);
+
+
+/* HANDHOLDING DISPLAY */
+
+document.getElementById("handholdingFee").innerText =
+money2(handholdingFee);
+
+document.getElementById("handholdingSubsidyAmount").innerText =
+minusMoney2(handholdingSubsidy);
+
+document.getElementById("handholdingSubsidyLabel").innerText =
+"(On Handholding Fee) (" +
+Math.round(handholdingRate * 100) +
+"%)";
+
+document.getElementById("handholdingPayable").innerText =
+money2(handholdingPayable);
+
+document.getElementById("handholdingBaseAmount").innerText =
+money2(handholdingBaseAmount);
+
+document.getElementById("handholdingGST").innerText =
+money2(handholdingGST);
+
+document.getElementById("handholdingNetPayable").innerText =
+money2(handholdingPayable);
+
+
+/* OVERALL DISPLAY */
+
+document.getElementById("projectTotal").innerText =
+money2(projectTotal);
+
+document.getElementById("centralSubsidy").innerText =
+minusMoney2(centralSubsidy);
+
+document.getElementById("balance").innerText =
+money2(balance);
+
+document.getElementById("stateSubsidy").innerText =
+minusMoney2(stateSubsidy);
+
+document.getElementById("clientContribution").innerText =
+money2(clientContribution);
+
+
+/* INSTALLMENTS */
+
+document.getElementById("m1").innerText =
+money2(milestone1);
+
+document.getElementById("m2").innerText =
+money2(milestone2);
+
+document.getElementById("m3").innerText =
+money2(milestone3);
+
+
+/* TITLE */
+
+const levelText =
+level === "silver"
+?
+"Silver"
+:
+"Gold";
+
+
+const msmeText =
+msme.charAt(0).toUpperCase() +
+msme.slice(1);
+
+
+const applicantText =
+
+applicant === "male"
+
+?
+
+"General Male"
+
+:
+
+applicant === "women"
+
+?
+
+"Women Entrepreneur"
+
+:
+
+"SC/ST/EWS";
+
+
+document.getElementById("quoteTitle").innerText =
+
+"ZED "
++
+levelText
++
+" Quotation – "
++
+msmeText
++
+" – "
++
+applicantText;
+
+
+document.getElementById("quoteNoDisplay").innerText = quoteNo;
+document.getElementById("quoteDateDisplay").innerText = quoteDate;
+document.getElementById("quoteCompanyDisplay").innerText = companyName;
+document.getElementById("quoteContactDisplay").innerText = safeClientValue("clientContact");
+document.getElementById("quoteCityDisplay").innerText = safeClientValue("clientCity");
+document.getElementById("quoteMobileDisplay").innerText = safeClientValue("clientMobile");
+
+
+document.getElementById("results").style.display =
+"block";
+
+
+document.getElementById("results").scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+
+}
+
+
+/* IMAGE WAIT */
+
+function waitForImage(img){
+
+return new Promise(function(resolve){
+
+if(
+img
+&&
+img.complete
+&&
+img.naturalWidth > 0
+){
+
+resolve(true);
+
+return;
+
+}
+
+if(!img){
+
+resolve(false);
+
+return;
+
+}
+
+img.onload =
+function(){
+
+resolve(true);
+
+};
+
+img.onerror =
+function(){
+
+resolve(false);
+
+};
+
+});
+
+}
+
+
+/* PDF MONEY */
+
+function pdfMoneyText(id){
+
+const element =
+document.getElementById(id);
+
+let value =
+element
+?
+element.innerText
+:
+"";
+
+value =
+value.replace(
+/₹/g,
+"INR "
+);
+
+value =
+value.replace(
+/\u00A0/g,
+" "
+);
+
+return value;
+
+}
+
+
+/* DOWNLOAD PDF */
+
+async function downloadPDF(){
+
+
+if(
+!window.jspdf
+||
+!window.jspdf.jsPDF
+){
+
+alert(
+"PDF system load nahi hua. Internet connection check karke page refresh karein."
+);
+
+return;
+
+}
+
+
+if(
+!document
+.getElementById("projectTotal")
+.innerText
+){
+
+alert(
+"Pehle Calculate ZED Quotation button dabaiye."
+);
+
+return;
+
+}
+
+
+const { jsPDF } =
+window.jspdf;
+
+
+const doc =
+
+new jsPDF({
+
+orientation:"portrait",
+
+unit:"mm",
+
+format:"a4"
+
+});
+
+
+const level =
+document.getElementById("level").value;
+
+
+const msme =
+document.getElementById("msme").value;
+
+
+const applicant =
+document.getElementById("applicant").value;
+
+
+const levelText =
+
+level === "silver"
+
+?
+
+"SILVER"
+
+:
+
+"GOLD";
+
+
+const msmeText =
+
+msme.charAt(0).toUpperCase()
++
+msme.slice(1);
+
+
+const applicantText =
+
+applicant === "male"
+
+?
+
+"General Male"
+
+:
+
+applicant === "women"
+
+?
+
+"Women Entrepreneur"
+
+:
+
+"SC/ST/EWS";
+
+const quoteNo = document.getElementById("quoteNoDisplay").innerText || getQuotationNumber();
+const quoteDate = document.getElementById("quoteDateDisplay").innerText || getQuotationDate();
+const clientCompany = safeClientValue("clientCompany");
+const clientContact = safeClientValue("clientContact");
+const clientCity = safeClientValue("clientCity");
+const clientMobile = safeClientValue("clientMobile");
+
+/* GET LOGOS */
+
+const valueLogo =
+document.getElementById("pdfValueLogo");
+
+const zedLogo =
+document.getElementById("pdfZedLogo");
+
+const msmeLogo =
+document.getElementById("pdfMsmeLogo");
+
+
+await Promise.all([
+
+waitForImage(valueLogo),
+
+waitForImage(zedLogo),
+
+waitForImage(msmeLogo)
+
+]);
+
+
+/* PDF HEADER */
+
+function addPDFHeader(){
+
+
+doc.setFillColor(
+255,
+255,
+255
+);
+
+
+doc.rect(
+0,
+0,
+210,
+297,
+"F"
+);
+
+
+try{
+
+
+if(valueLogo && valueLogo.complete){
+
+doc.addImage(
+valueLogo,
+"PNG",
+10,
+7,
+32,
+32
+);
+
+}
+
+
+if(zedLogo && zedLogo.complete){
+
+doc.addImage(
+zedLogo,
+"PNG",
+145,
+8,
+25,
+27
+);
+
+}
+
+
+if(msmeLogo && msmeLogo.complete){
+
+doc.addImage(
+msmeLogo,
+"PNG",
+170,
+7,
+34,
+29
+);
+
+}
+
+
+}
+
+catch(error){
+
+console.log(error);
+
+}
+
+
+/* COMPANY */
+
+doc.setTextColor(
+20,
+20,
+20
+);
+
+
+doc.setFont(
+"helvetica",
+"bold"
+);
+
+
+doc.setFontSize(
+20
+);
+
+
+doc.text(
+
+"VALUE CONSULTING",
+
+104,
+
+18,
+
+{
+
+align:"center"
+
+}
+
+);
+
+
+doc.setFont(
+"helvetica",
+"normal"
+);
+
+
+doc.setFontSize(
+9.5
+);
+
+
+doc.text(
+
+"Sustainability Beyond Compliance",
+
+104,
+
+25,
+
+{
+
+align:"center"
+
+}
+
+);
+
+
+doc.setFontSize(
+8.5
+);
+
+
+doc.text(
+
+"MSME Sustainable ZED Certification Consultancy",
+
+104,
+
+31,
+
+{
+
+align:"center"
+
+}
+
+);
+
+
+/* YELLOW LINE */
+
+doc.setFillColor(
+255,
+234,
+0
+);
+
+
+doc.rect(
+13,
+40,
+188,
+2,
+"F"
+);
+
+
+/* BLACK HEADER */
+
+doc.setFillColor(
+20,
+20,
+20
+);
+
+
+doc.rect(
+13,
+48,
+188,
+22,
+"F"
+);
+
+
+doc.setTextColor(
+255,
+255,
+255
+);
+
+
+doc.setFont(
+"helvetica",
+"bold"
+);
+
+
+doc.setFontSize(
+15
+);
+
+
+doc.text(
+
+"ZED "
++
+levelText
++
+" QUOTATION",
+
+107,
+
+58,
+
+{
+
+align:"center"
+
+}
+
+);
+
+
+doc.setFontSize(
+9.5
+);
+
+
+doc.text(
+
+msmeText
++
+" Enterprise - "
++
+applicantText,
+
+107,
+
+65,
+
+{
+
+align:"center"
+
+}
+
+);
+
+}
+
+function addClientDetails(){
+    doc.setTextColor(20,20,20);
+    doc.setDrawColor(215,215,215);
+    doc.setFillColor(250,250,250);
+    doc.roundedRect(13,75,188,27,2,2,"FD");
+
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(8.5);
+    doc.text("Quotation No.",18,82);
+    doc.text("Date",112,82);
+    doc.text("Company",18,91);
+    doc.text("Contact",112,91);
+    doc.text("City",18,99);
+    doc.text("Mobile",112,99);
+
+    doc.setFont("helvetica","normal");
+    doc.text(String(quoteNo),43,82);
+    doc.text(String(quoteDate),126,82);
+    doc.text(String(clientCompany).slice(0,42),43,91);
+    doc.text(String(clientContact).slice(0,28),132,91);
+    doc.text(String(clientCity).slice(0,30),43,99);
+    doc.text(String(clientMobile).slice(0,22),132,99);
+}
+
+
+/* PDF TABLE */
+
+let y =
+110;
+
+
+function sectionTitle(title){
+
+doc.setFillColor(
+244,
+244,
+244
+);
+
+doc.rect(
+13,
+y - 6,
+188,
+10,
+"F"
+);
+
+doc.setFillColor(
+255,
+234,
+0
+);
+
+doc.rect(
+13,
+y - 6,
+2.5,
+10,
+"F"
+);
+
+doc.setTextColor(
+20,
+20,
+20
+);
+
+doc.setFont(
+"helvetica",
+"bold"
+);
+
+doc.setFontSize(
+11
+);
+
+doc.text(
+title,
+18,
+y
+);
+
+y +=
+10;
+
+}
+
+
+function pdfRow(
+label,
+value,
+highlight,
+finalRow
+){
+
+if(finalRow){
+
+doc.setFillColor(
+255,
+234,
+0
+);
+
+doc.rect(
+13,
+y - 6,
+188,
+10,
+"F"
+);
+
+}
+
+else if(highlight){
+
+doc.setFillColor(
+255,
+249,
+191
+);
+
+doc.rect(
+13,
+y - 6,
+188,
+10,
+"F"
+);
+
+}
+
+
+doc.setTextColor(
+20,
+20,
+20
+);
+
+
+doc.setFont(
+
+"helvetica",
+
+highlight || finalRow
+
+?
+
+"bold"
+
+:
+
+"normal"
+
+);
+
+
+doc.setFontSize(
+9
+);
+
+
+doc.text(
+label,
+18,
+y
+);
+
+
+doc.setFont(
+"helvetica",
+"bold"
+);
+
+
+doc.text(
+
+value,
+
+196,
+
+y,
+
+{
+
+align:"right"
+
+}
+
+);
+
+
+doc.setDrawColor(
+220,
+220,
+220
+);
+
+
+doc.line(
+13,
+y + 4,
+201,
+y + 4
+);
+
+
+y +=
+11;
+
+}
+
+
+function subsidyRow(
+line1,
+line2,
+value
+){
+
+doc.setTextColor(
+20,
+20,
+20
+);
+
+doc.setFont(
+"helvetica",
+"normal"
+);
+
+doc.setFontSize(
+9
+);
+
+doc.text(
+line1,
+18,
+y
+);
+
+doc.setFontSize(
+7.5
+);
+
+doc.text(
+line2,
+18,
+y + 4
+);
+
+doc.setFont(
+"helvetica",
+"bold"
+);
+
+doc.setFontSize(
+9
+);
+
+doc.text(
+
+value,
+
+196,
+
+y + 2,
+
+{
+
+align:"right"
+
+}
+
+);
+
+doc.setDrawColor(
+220,
+220,
+220
+);
+
+doc.line(
+13,
+y + 7,
+201,
+y + 7
+);
+
+y +=
+14;
+
+}
+
+
+/* PAGE 1 */
+
+addPDFHeader();
+addClientDetails();
+
+y =
+110;
+
+
+/* CERTIFICATION */
+
+sectionTitle(
+"Certification Fee Summary"
+);
+
+
+pdfRow(
+"Certification Fee",
+pdfMoneyText("certFee"),
+false,
+false
+);
+
+
+subsidyRow(
+
+"Subsidy",
+
+document
+.getElementById("certSubsidyLabel")
+.innerText,
+
+pdfMoneyText(
+"certSubsidyAmount"
+)
+
+);
+
+
+pdfRow(
+"Amount Payable",
+pdfMoneyText("certPayable"),
+true,
+false
+);
+
+
+pdfRow(
+"Amount",
+pdfMoneyText("certBaseAmount"),
+false,
+false
+);
+
+
+pdfRow(
+"GST (18%)",
+pdfMoneyText("certGST"),
+false,
+false
+);
+
+
+pdfRow(
+"Net Payable Amount",
+pdfMoneyText("certNetPayable"),
+false,
+true
+);
+
+
+/* FOOTER PAGE 1 */
+
+doc.setTextColor(
+20,
+20,
+20
+);
+
+doc.setFont(
+"helvetica",
+"bold"
+);
+
+doc.setFontSize(
+9.5
+);
+
+doc.text(
+"VALUE CONSULTING",
+13,
+282
+);
+
+doc.setFont(
+"helvetica",
+"normal"
+);
+
+doc.setFontSize(
+8.5
+);
+
+doc.text(
+"+91 98240 99027 | WhatsApp: +91 92136 99027 | value.zedmsme@gmail.com",
+13,
+288
+);
+
+
+/* PAGE 2 */
+
+doc.addPage();
+
+addPDFHeader();
+
+y =
+79;
+
+
+/* HANDHOLDING */
+
+y +=
+6;
+
+
+sectionTitle(
+"Handholding Fee Summary"
+);
+
+
+pdfRow(
+"Handholding Fee",
+pdfMoneyText("handholdingFee"),
+false,
+false
+);
+
+
+subsidyRow(
+
+"Subsidy",
+
+document
+.getElementById("handholdingSubsidyLabel")
+.innerText,
+
+pdfMoneyText(
+"handholdingSubsidyAmount"
+)
+
+);
+
+
+pdfRow(
+"Amount Payable",
+pdfMoneyText("handholdingPayable"),
+true,
+false
+);
+
+
+pdfRow(
+"Amount",
+pdfMoneyText("handholdingBaseAmount"),
+false,
+false
+);
+
+
+pdfRow(
+"GST (18%)",
+pdfMoneyText("handholdingGST"),
+false,
+false
+);
+
+
+pdfRow(
+"Net Payable Amount",
+pdfMoneyText("handholdingNetPayable"),
+false,
+true
+);
+
+
+
+
+/* OVERALL */
+
+sectionTitle(
+"Overall Payment Summary"
+);
+
+
+pdfRow(
+"Total Fee",
+pdfMoneyText("projectTotal"),
+false,
+false
+);
+
+
+pdfRow(
+"Total Eligible Central Subsidy",
+pdfMoneyText("centralSubsidy"),
+false,
+false
+);
+
+
+pdfRow(
+"Amount Payable after Central Subsidy",
+pdfMoneyText("balance"),
+true,
+false
+);
+
+
+pdfRow(
+"Eligible State Assistance",
+pdfMoneyText("stateSubsidy"),
+false,
+false
+);
+
+
+pdfRow(
+"Final Client Payable Amount",
+pdfMoneyText("clientContribution"),
+false,
+true
+);
+
+
+/* INSTALLMENTS */
+
+y +=
+8;
+
+
+sectionTitle(
+"Handholding Fee - Payment Milestones"
+);
+
+
+pdfRow(
+"1st Installment - 40%",
+pdfMoneyText("m1"),
+false,
+false
+);
+
+
+pdfRow(
+"2nd Installment - 30%",
+pdfMoneyText("m2"),
+false,
+false
+);
+
+
+pdfRow(
+"3rd Installment - 30%",
+pdfMoneyText("m3"),
+false,
+false
+);
+
+
+/* CONTACT */
+
+doc.setTextColor(
+20,
+20,
+20
+);
+
+doc.setFont(
+"helvetica",
+"bold"
+);
+
+doc.setFontSize(
+9.5
+);
+
+doc.text(
+"VALUE CONSULTING",
+13,
+282
+);
+
+doc.setFont(
+"helvetica",
+"normal"
+);
+
+doc.setFontSize(
+8.5
+);
+
+doc.text(
+"+91 98240 99027 | WhatsApp: +91 92136 99027 | value.zedmsme@gmail.com",
+13,
+288
+);
+
+
+/* DOWNLOAD */
+
+const filename =
+
+"Value-Consulting-ZED-"
+
++
+
+level
+
++
+
+"-"
+
++
+
+msme
+
++
+
+"-"
+
++
+
+applicant
+
++
+
+".pdf";
+
+
+doc.save(
+filename
+);
+
+
+}
+
+
+/* NEW QUOTATION */
+
+function newQuotation(){
+    currentQuoteNumber = "";
+    document.getElementById("clientCompany").value = "";
+    document.getElementById("clientContact").value = "";
+    document.getElementById("clientCity").value = "";
+    document.getElementById("clientMobile").value = "";
+    document.getElementById("results").style.display = "none";
+    document.getElementById("clientCompany").focus();
+    document.getElementById("quotation").scrollIntoView({behavior:"smooth"});
+}
+
+/* MOBILE MENU */
+
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+
+menuToggle.addEventListener("click", function(){
+    const isOpen = mainNav.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    menuToggle.innerText = isOpen ? "×" : "☰";
+});
+
+mainNav.querySelectorAll("a").forEach(function(link){
+    link.addEventListener("click", function(){
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded","false");
+        menuToggle.innerText = "☰";
+    });
+});
+
+/* CURRENT YEAR */
+
+document.getElementById("year").innerText =
+new Date().getFullYear();
+
+
+</script>
+
+
+</body>
+
+</html>
