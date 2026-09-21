@@ -1,536 +1,374 @@
-async function downloadPDF() {
+async function downloadPDF(){
 
-    // Check html2pdf library
-    if (typeof html2pdf === "undefined") {
+    if(typeof html2pdf === "undefined"){
         alert("PDF system load nahi hua. Please refresh the page.");
         return;
     }
 
-    try {
+    const level = document.getElementById("level").value;
+    const msme = document.getElementById("msme").value;
+    const applicant = document.getElementById("applicant").value;
 
-        /* =========================
-           GET USER SELECTIONS
-        ========================= */
+    const levelText =
+        level === "silver" ? "Silver" : "Gold";
 
-        const levelElement = document.getElementById("level");
-        const msmeElement = document.getElementById("msme");
-        const applicantElement = document.getElementById("applicant");
+    const msmeText =
+        msme.charAt(0).toUpperCase() + msme.slice(1);
 
-        if (!levelElement || !msmeElement || !applicantElement) {
-            throw new Error("Required form fields are missing.");
-        }
-
-        const level = levelElement.value;
-        const msme = msmeElement.value;
-        const applicant = applicantElement.value;
-
-
-        /* =========================
-           TEXT VALUES
-        ========================= */
-
-        const levelText =
-            level === "silver" ? "Silver" :
-            level === "gold" ? "Gold" :
-            level.charAt(0).toUpperCase() + level.slice(1);
+    const applicantText =
+        applicant === "male"
+        ? "General Male"
+        : applicant === "women"
+        ? "Women Entrepreneur"
+        : "SC/ST/EWS";
 
 
-        const msmeText =
-            msme
-                ? msme.charAt(0).toUpperCase() + msme.slice(1)
-                : "MSME";
+    /* GET CALCULATED VALUES */
+
+    const consultingFee =
+        document.getElementById("consultingFee").innerText;
+
+    const certFee =
+        document.getElementById("certFee").innerText;
+
+    const projectTotal =
+        document.getElementById("projectTotal").innerText;
+
+    const centralSubsidy =
+        document.getElementById("centralSubsidy").innerText;
+
+    const balance =
+        document.getElementById("balance").innerText;
+
+    const stateSubsidy =
+        document.getElementById("stateSubsidy").innerText;
+
+    const clientContribution =
+        document.getElementById("clientContribution").innerText;
+
+    const m1 =
+        document.getElementById("m1").innerText;
+
+    const m2 =
+        document.getElementById("m2").innerText;
+
+    const m3 =
+        document.getElementById("m3").innerText;
 
 
-        let applicantText = "General Male";
+    /* CREATE CLEAN PDF CONTENT */
 
-        if (applicant === "women") {
-            applicantText = "Women Entrepreneur";
-        }
+    const pdfContent = document.createElement("div");
 
-        if (applicant === "scst" || applicant === "ews") {
-            applicantText = "SC/ST/EWS";
-        }
-
-
-        /* =========================
-           SAFE VALUE FUNCTION
-        ========================= */
-
-        function getValue(id) {
-
-            const element = document.getElementById(id);
-
-            if (!element) {
-                return "₹ 0";
-            }
-
-            const value = element.innerText.trim();
-
-            return value || "₹ 0";
-        }
+    pdfContent.style.width = "750px";
+    pdfContent.style.background = "#ffffff";
+    pdfContent.style.color = "#111111";
+    pdfContent.style.padding = "30px";
+    pdfContent.style.fontFamily = "Arial, sans-serif";
 
 
-        /* =========================
-           GET CALCULATED VALUES
-        ========================= */
+    pdfContent.innerHTML = `
 
-        const consultingFee = getValue("consultingFee");
-        const certFee = getValue("certFee");
-        const projectTotal = getValue("projectTotal");
-        const centralSubsidy = getValue("centralSubsidy");
-        const balance = getValue("balance");
-        const stateSubsidy = getValue("stateSubsidy");
-        const clientContribution = getValue("clientContribution");
+        <div style="
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            border-bottom:3px solid #111;
+            padding-bottom:15px;
+            margin-bottom:20px;
+        ">
 
-        const m1 = getValue("m1");
-        const m2 = getValue("m2");
-        const m3 = getValue("m3");
-
-
-        /* =========================
-           CREATE PDF CONTAINER
-        ========================= */
-
-        const pdfContent = document.createElement("div");
-
-        pdfContent.id = "zedPdfContent";
-
-        pdfContent.style.cssText = `
-            width: 720px;
-            box-sizing: border-box;
-            background: #ffffff;
-            color: #111111;
-            padding: 28px;
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            line-height: 1.4;
-        `;
-
-
-        /* =========================
-           PDF HTML
-        ========================= */
-
-        pdfContent.innerHTML = `
-
-            <!-- HEADER -->
+            <img
+                src="logo.png"
+                style="
+                    width:85px;
+                    height:85px;
+                    object-fit:contain;
+                "
+            >
 
             <div style="
-                display:flex;
-                align-items:center;
-                justify-content:space-between;
-                border-bottom:3px solid #111111;
-                padding-bottom:12px;
-                margin-bottom:18px;
-            ">
-
-                <div style="
-                    width:90px;
-                    text-align:left;
-                ">
-
-                    <img
-                        src="logo.png"
-                        alt="Value Consulting"
-                        style="
-                            width:78px;
-                            height:78px;
-                            object-fit:contain;
-                            display:block;
-                        "
-                    >
-
-                </div>
-
-
-                <div style="
-                    flex:1;
-                    text-align:center;
-                    padding:0 10px;
-                ">
-
-                    <div style="
-                        font-size:24px;
-                        font-weight:bold;
-                        letter-spacing:0.5px;
-                    ">
-                        VALUE CONSULTING
-                    </div>
-
-                    <div style="
-                        font-size:12px;
-                        margin-top:4px;
-                    ">
-                        Sustainability Beyond Compliance
-                    </div>
-
-                    <div style="
-                        font-size:11px;
-                        margin-top:3px;
-                    ">
-                        MSME Sustainable ZED Certification Consultancy
-                    </div>
-
-                </div>
-
-
-                <div style="
-                    width:155px;
-                    display:flex;
-                    justify-content:flex-end;
-                    align-items:center;
-                    gap:8px;
-                ">
-
-                    <img
-                        src="zed-logo.png"
-                        alt="ZED"
-                        style="
-                            width:60px;
-                            height:60px;
-                            object-fit:contain;
-                            display:block;
-                        "
-                    >
-
-                    <img
-                        src="msme-logo.png"
-                        alt="MSME"
-                        style="
-                            width:78px;
-                            height:60px;
-                            object-fit:contain;
-                            display:block;
-                        "
-                    >
-
-                </div>
-
-            </div>
-
-
-            <!-- TITLE -->
-
-            <div style="
+                flex:1;
                 text-align:center;
-                background:#111111;
-                color:#ffffff;
-                padding:12px 10px;
-                margin-bottom:18px;
-                border-radius:3px;
             ">
 
                 <div style="
-                    font-size:21px;
+                    font-size:26px;
                     font-weight:bold;
                 ">
-                    ZED ${levelText} Quotation
+                    VALUE CONSULTING
+                </div>
+
+                <div style="
+                    font-size:13px;
+                    margin-top:4px;
+                ">
+                    Sustainability Beyond Compliance
                 </div>
 
                 <div style="
                     font-size:12px;
                     margin-top:3px;
                 ">
-                    ${msmeText} Enterprise – ${applicantText}
+                    MSME Sustainable ZED Certification Consultancy
                 </div>
 
             </div>
 
-
-            <!-- FINANCIAL DETAILS -->
-
             <div style="
-                font-size:17px;
-                font-weight:bold;
-                margin-bottom:7px;
-                border-bottom:2px solid #111111;
-                padding-bottom:5px;
-            ">
-                Cost & Subsidy Details
-            </div>
-
-
-            ${pdfRow("Consulting Fee", consultingFee)}
-
-            ${pdfRow("Certification Fee", certFee)}
-
-            ${pdfRowHighlight(
-                "Total Project Cost",
-                projectTotal,
-                "#fff5a8"
-            )}
-
-            ${pdfRow(
-                "Central Government Subsidy",
-                centralSubsidy
-            )}
-
-            ${pdfRow(
-                "Balance after Central Subsidy",
-                balance
-            )}
-
-            ${pdfRow(
-                "Indicative State Subsidy",
-                stateSubsidy
-            )}
-
-            ${pdfRowHighlight(
-                "Estimated Client Contribution",
-                clientContribution,
-                "#ffea00"
-            )}
-
-
-            <!-- MILESTONES -->
-
-            <div style="
-                font-size:17px;
-                font-weight:bold;
-                margin-top:22px;
-                margin-bottom:7px;
-                border-bottom:2px solid #111111;
-                padding-bottom:5px;
-            ">
-                Consultancy Payment Milestones
-            </div>
-
-
-            ${pdfRow(
-                "Milestone 1 – 40%",
-                m1
-            )}
-
-            ${pdfRow(
-                "Milestone 2 – 30%",
-                m2
-            )}
-
-            ${pdfRow(
-                "Milestone 3 – 30%",
-                m3
-            )}
-
-
-            <!-- NOTE -->
-
-            <div style="
-                margin-top:20px;
-                padding:10px;
-                border:1px solid #cccccc;
-                background:#f7f7f7;
-                font-size:10px;
-                color:#555555;
-                line-height:1.5;
-            ">
-
-                <strong>Note:</strong>
-                This quotation provides an indicative calculation.
-                Actual subsidy and eligibility are subject to applicable
-                Government scheme rules, eligibility criteria and approval.
-
-            </div>
-
-
-            <!-- FOOTER -->
-
-            <div style="
-                margin-top:20px;
-                padding-top:12px;
-                border-top:1px solid #aaaaaa;
                 display:flex;
-                justify-content:space-between;
-                font-size:11px;
+                align-items:center;
+                gap:12px;
             ">
 
-                <div>
-                    <strong>Value Consulting</strong><br>
-                    +91 98240 99027<br>
-                    value.zedmsme@gmail.com
-                </div>
+                <img
+                    src="zed-logo.png"
+                    style="
+                        width:70px;
+                        height:70px;
+                        object-fit:contain;
+                    "
+                >
 
-                <div style="
-                    text-align:right;
-                ">
-                    MSME Sustainable<br>
-                    ZED Certification Consultancy
-                </div>
+                <img
+                    src="msme-logo.png"
+                    style="
+                        width:90px;
+                        height:70px;
+                        object-fit:contain;
+                    "
+                >
 
             </div>
 
-        `;
+        </div>
 
 
-        /* =========================
-           ADD TEMPORARILY TO DOM
-        ========================= */
+        <div style="
+            text-align:center;
+            background:#111;
+            color:#fff;
+            padding:14px;
+            margin-bottom:20px;
+        ">
 
-        pdfContent.style.position = "fixed";
-        pdfContent.style.left = "-10000px";
-        pdfContent.style.top = "0";
-        pdfContent.style.zIndex = "-9999";
+            <div style="
+                font-size:22px;
+                font-weight:bold;
+            ">
+                ZED ${levelText} Quotation
+            </div>
 
-        document.body.appendChild(pdfContent);
+            <div style="
+                font-size:13px;
+                margin-top:4px;
+            ">
+                ${msmeText} Enterprise – ${applicantText}
+            </div>
 
-
-        /* =========================
-           WAIT FOR IMAGES
-        ========================= */
-
-        const images = pdfContent.querySelectorAll("img");
-
-        await Promise.all(
-            Array.from(images).map(img => {
-
-                return new Promise(resolve => {
-
-                    if (img.complete && img.naturalWidth > 0) {
-                        resolve();
-                        return;
-                    }
-
-                    img.onload = () => resolve();
-                    img.onerror = () => {
-                        console.warn(
-                            "Image could not be loaded:",
-                            img.src
-                        );
-                        resolve();
-                    };
-
-                });
-
-            })
-        );
+        </div>
 
 
-        /* =========================
-           PDF OPTIONS
-        ========================= */
+        ${pdfRow("Consulting Fee", consultingFee)}
 
-        const options = {
+        ${pdfRow("Certification Fee", certFee)}
 
-            margin: [8, 8, 8, 8],
+        ${pdfRowHighlight(
+            "Total Project Cost",
+            projectTotal,
+            "#fff5a8"
+        )}
 
-            filename:
-                `Value-Consulting-ZED-${levelText}-${msmeText}-${applicantText}.pdf`
-                    .replace(/\s+/g, "-")
-                    .replace(/[^\w.-]/g, ""),
+        ${pdfRow(
+            "Central Government Subsidy",
+            centralSubsidy
+        )}
 
-            image: {
-                type: "jpeg",
-                quality: 0.98
-            },
+        ${pdfRow(
+            "Balance after Central Subsidy",
+            balance
+        )}
 
-            html2canvas: {
+        ${pdfRow(
+            "Indicative State Subsidy",
+            stateSubsidy
+        )}
 
-                scale: 2,
+        ${pdfRowHighlight(
+            "Estimated Client Contribution",
+            clientContribution,
+            "#ffea00"
+        )}
 
-                useCORS: true,
 
-                allowTaint: false,
+        <div style="
+            font-size:18px;
+            font-weight:bold;
+            margin-top:25px;
+            margin-bottom:8px;
+        ">
+            Consultancy Payment Milestones
+        </div>
 
-                backgroundColor: "#ffffff",
 
-                logging: false,
+        ${pdfRow("Milestone 1 – 40%", m1)}
 
-                scrollX: 0,
+        ${pdfRow("Milestone 2 – 30%", m2)}
 
-                scrollY: 0
+        ${pdfRow("Milestone 3 – 30%", m3)}
 
-            },
 
-            jsPDF: {
+        <div style="
+            margin-top:24px;
+            padding-top:15px;
+            border-top:1px solid #aaa;
+            font-size:11px;
+            color:#555;
+            line-height:1.5;
+        ">
 
-                unit: "mm",
+            Note: This quotation provides an indicative calculation.
+            Actual subsidy and eligibility are subject to applicable
+            Government scheme rules, eligibility criteria and approval.
 
-                format: "a4",
+        </div>
 
-                orientation: "portrait",
 
-                compress: true
+        <div style="
+            margin-top:25px;
+            display:flex;
+            justify-content:space-between;
+            font-size:12px;
+        ">
 
-            },
+            <div>
+                <strong>Value Consulting</strong><br>
+                +91 98240 99027<br>
+                value.zedmsme@gmail.com
+            </div>
 
-            pagebreak: {
+            <div style="text-align:right;">
+                MSME Sustainable<br>
+                ZED Certification Consultancy
+            </div>
 
-                mode: [
-                    "css",
-                    "legacy"
-                ]
+        </div>
 
+    `;
+
+
+    /* PUT ELEMENT TEMPORARILY ON SCREEN */
+
+    pdfContent.style.position = "absolute";
+    pdfContent.style.left = "0";
+    pdfContent.style.top = "0";
+    pdfContent.style.zIndex = "99999";
+
+    document.body.appendChild(pdfContent);
+
+
+    /* WAIT FOR LOGOS TO LOAD */
+
+    const images =
+        pdfContent.querySelectorAll("img");
+
+    await Promise.all(
+        Array.from(images).map(img => {
+
+            if(img.complete){
+                return Promise.resolve();
             }
 
-        };
+            return new Promise(resolve => {
+
+                img.onload = resolve;
+                img.onerror = resolve;
+
+            });
+
+        })
+    );
 
 
-        /* =========================
-           GENERATE PDF
-        ========================= */
+    const options = {
+
+        margin: [8,8,8,8],
+
+        filename:
+            "Value-Consulting-ZED-" +
+            level + "-" +
+            msme + "-" +
+            applicant +
+            ".pdf",
+
+        image:{
+            type:"jpeg",
+            quality:0.98
+        },
+
+        html2canvas:{
+            scale:2,
+            useCORS:true,
+            backgroundColor:"#ffffff",
+            logging:false
+        },
+
+        jsPDF:{
+            unit:"mm",
+            format:"a4",
+            orientation:"portrait"
+        }
+
+    };
+
+
+    try{
 
         await html2pdf()
             .set(options)
             .from(pdfContent)
             .save();
 
+    }
 
-    } catch (error) {
+    catch(error){
 
-        console.error(
-            "PDF Generation Error:",
-            error
-        );
+        console.error(error);
 
         alert(
-            "PDF generate nahi ho paya. Please page refresh karke dobara try karein."
+            "PDF download error. Please refresh and try again."
         );
 
-    } finally {
+    }
 
-        const oldPdf =
-            document.getElementById("zedPdfContent");
+    finally{
 
-        if (oldPdf) {
-            oldPdf.remove();
-        }
+        document.body.removeChild(pdfContent);
 
     }
 
 }
 
 
-/* =====================================================
-   PDF ROW
-===================================================== */
+/* =========================
+PDF ROW FUNCTIONS
+========================= */
 
-function pdfRow(label, value) {
+function pdfRow(label,value){
 
     return `
 
         <div style="
             display:flex;
             justify-content:space-between;
-            align-items:center;
-            padding:9px 8px;
-            border-bottom:1px solid #dddddd;
-            font-size:13px;
-            min-height:18px;
-            page-break-inside:avoid;
+            padding:12px 10px;
+            border-bottom:1px solid #ddd;
+            font-size:14px;
         ">
 
-            <span style="
-                flex:1;
-            ">
-                ${label}
-            </span>
+            <span>${label}</span>
 
-            <strong style="
-                margin-left:20px;
-                white-space:nowrap;
-            ">
-                ${value}
-            </strong>
+            <strong>${value}</strong>
 
         </div>
 
@@ -539,38 +377,23 @@ function pdfRow(label, value) {
 }
 
 
-/* =====================================================
-   HIGHLIGHT ROW
-===================================================== */
-
-function pdfRowHighlight(label, value, color) {
+function pdfRowHighlight(label,value,color){
 
     return `
 
         <div style="
             display:flex;
             justify-content:space-between;
-            align-items:center;
-            padding:10px 8px;
-            border-bottom:1px solid #cccccc;
+            padding:13px 10px;
+            border-bottom:1px solid #ccc;
             background:${color};
-            font-size:14px;
+            font-size:16px;
             font-weight:bold;
-            page-break-inside:avoid;
         ">
 
-            <span style="
-                flex:1;
-            ">
-                ${label}
-            </span>
+            <span>${label}</span>
 
-            <strong style="
-                margin-left:20px;
-                white-space:nowrap;
-            ">
-                ${value}
-            </strong>
+            <strong>${value}</strong>
 
         </div>
 
