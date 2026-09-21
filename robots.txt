@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://priyal5420.github.io/valueconsulting.github.io/sitemap.xml
